@@ -76,10 +76,10 @@ var Jr = Jr || {};
     },
     doAnimation: function(fromEl, toEl, type, direction) {
       var after, next;
-      $('body').prepend(toEl);
+      $('#app-container').prepend(toEl);
       toEl.addClass('animate-to-view').addClass(direction).addClass('initial');
-      $('body').addClass('animate');
-      $('body').addClass(direction);
+      $('#app-container').addClass('animate');
+      $('#app-container').addClass(direction);
       next = function() {
         return toEl.removeClass('initial');
       };
@@ -88,7 +88,7 @@ var Jr = Jr || {};
         fromEl.remove();
         toEl.attr('id', 'app-main');
         toEl.removeClass('animate-to-view').removeClass(direction);
-        return $('body').removeClass('animate').removeClass(direction);
+        return $('#app-container').removeClass('animate').removeClass(direction);
       };
       return setTimeout(after, 400);
     }

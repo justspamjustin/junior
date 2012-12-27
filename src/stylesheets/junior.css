@@ -1,3 +1,11 @@
+#app-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
 .animate-to-view {
   width: 100%;
   height: 100%;
@@ -5,7 +13,7 @@
   top: 0px;
 }
 
-body.animate {
+#app-container.animate {
   -webkit-transition: all 0.4s;
   -moz-transition: all 0.4s;
   -o-transition: all 0.4s;
@@ -16,7 +24,7 @@ body.animate {
   -webkit-backface-visibility: hidden;
 }
 
-body.animate.LEFT #app-main header.bar-title {
+#app-container.animate.LEFT #app-main header.bar-title {
   z-index: -1;
 }
 
@@ -33,7 +41,7 @@ body.animate.LEFT #app-main header.bar-title {
   top: -5px;
 }
 
-body.animate .header-animated {
+#app-container.animate .header-animated {
   -webkit-transform: translate3d(0, 0, 1px);
   -moz-transform: translate3d(0, 0, 1px);
   -ms-transform: translate3d(0, 0, 1px);
@@ -49,7 +57,7 @@ body.animate .header-animated {
   transform: translate3d(-100%, 0, 0);
 }
 
-body.animate.RIGHT {
+#app-container.animate.RIGHT {
   -webkit-transform: translate3d(100%, 0, 0);
   -moz-transform: translate3d(100%, 0, 0);
   -ms-transform: translate3d(100%, 0, 0);
@@ -65,7 +73,7 @@ body.animate.RIGHT {
   transform: translate3d(100%, 0, 0);
 }
 
-body.animate.LEFT {
+#app-container.animate.LEFT {
   -webkit-transform: translate3d(-100%, 0, 0);
   -moz-transform: translate3d(-100%, 0, 0);
   -ms-transform: translate3d(-100%, 0, 0);
@@ -73,8 +81,7 @@ body.animate.LEFT {
   transform: translate3d(-100%, 0, 0);
 }
 
-/* line 53, ../../src/scss/animations.scss */
-body.animate.LEFT #app-main .header-animated {
+#app-container.animate.LEFT #app-main .header-animated {
   -webkit-transform: translate3d(50%, 0, 0);
   -moz-transform: translate3d(50%, 0, 0);
   -ms-transform: translate3d(50%, 0, 0);
@@ -89,7 +96,7 @@ body.animate.LEFT #app-main .header-animated {
   opacity: 0;
 }
 
-body.animate.RIGHT #app-main .header-animated {
+#app-container.animate.RIGHT #app-main .header-animated {
   -webkit-transform: translate3d(-50%, 0, 0);
   -moz-transform: translate3d(-50%, 0, 0);
   -ms-transform: translate3d(-50%, 0, 0);
