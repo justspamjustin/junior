@@ -99,6 +99,7 @@ header.junior-intro {
   -moz-border-radius: 10px 10px;
   margin: 8px;
   -webkit-transition: opacity .5s;
+  -moz-transition: opacity .5s;
   cursor: pointer;
 }
 
@@ -134,12 +135,12 @@ header.junior-intro {
 }
 
 .pushstate-content .icon-umbrella {
-  font-size: 18em;
+  font-size: 14em;
   margin: auto;
   width: 100%;
   text-align: center;
   display: block;
-  line-height: 250px;
+  line-height: 160px;
 }
 
 .pushstate-content p {

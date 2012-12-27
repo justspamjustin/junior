@@ -18,9 +18,9 @@ var Jr = Jr || {};
     }
   });
 
-  var navigatorStore;
-  navigatorStore = {};
   Jr.Navigator = {
+    backButtonFlag: true,
+    history: [],
     directions: {
       UP: 'UP',
       DOWN: 'DOWN',
@@ -38,12 +38,13 @@ var Jr = Jr || {};
       SLIDE_OVER: 'SLIDE_OVER'
     },
     navigate: function(url, opts) {
-      navigatorStore.lastNavigate = opts;
+      this.history.push(opts);
+      this.backButtonFlag = false;
       return Backbone.history.navigate(url, opts);
     },
     renderView: function(mainEl, view) {
-      var animation, newEl, _ref;
-      animation = navigatorStore != null ? (_ref = navigatorStore.lastNavigate) != null ? _ref.animation : void 0 : void 0;
+      var animation, newEl;
+      animation = this.history.length > 0 ? this.history[this.history.length -1].animation : null;
       if (animation) {
         newEl = $('<div></div>');
         this.resetContent(newEl, view);
@@ -63,9 +64,15 @@ var Jr = Jr || {};
     },
     afterAnimation: function() {
       var animation, opposite;
-      animation = navigatorStore.lastNavigate.animation;
+      var lastNavigate = this.history.pop();
+      animation = lastNavigate.animation;
       opposite = this.opposites[animation.direction];
-      return navigatorStore.lastNavigate.animation.direction = opposite;
+      lastNavigate.animation.direction = opposite;
+      this.history.push(lastNavigate);
+      if(this.backButtonFlag) {
+        this.history.pop();
+      }
+      this.backButtonFlag = true;
     },
     animate: function(fromEl, toEl, type, direction) {
       if (this.animations.hasOwnProperty(type)) {
