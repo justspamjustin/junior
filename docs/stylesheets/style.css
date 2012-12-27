@@ -147,3 +147,38 @@ header.junior-intro {
   font-size: 1.4em;
 }
 
+
+/** Docs **/
+
+.docs-content {
+  display: none;
+}
+
+@media screen and (min-width : 400px) {
+  #iphone-window {
+    position: absolute;
+    width: 320px;
+    height: 528px;
+    top: 147px;
+    left: 27px;
+    overflow: hidden;
+  }
+
+  #iphone-window #app-container,
+  #iphone-window .bar-title,
+  #iphone-window .content {
+    position: absolute;
+  }
+
+  .docs-content {
+    display: block;
+  }
+}
+
+/* Fix stuff that bootstrap breaks */
+#iphone-window .bar-title h1 {
+  margin: 0;
+}
+
+
+
