@@ -33,12 +33,16 @@
   -moz-transition: all 0.4s;
   -o-transition: all 0.4s;
   transition: all 0.4s;
-  width: 100%;
+  width: 98%;
   position: absolute;
 }
 
 .header-animated .title {
   top: -5px;
+}
+
+.bar-title .title + [class*="button"]:last-child {
+  top: 0px;
 }
 
 #app-container.animate .header-animated {

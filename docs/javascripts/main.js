@@ -1,3 +1,5 @@
+// Home
+
 var HomeTemplate = [
   '<div class="content">',
   ' <header class="junior-intro">',
@@ -43,13 +45,13 @@ var HomeView = Jr.View.extend({
   },
 
   events: {
-    'click .go-to-details': 'onClickGoToDetails',
+    'click .show-more-button': 'onClickShowMoreButton',
     'onScroll .carousel-list': 'onScrollCarousel',
     'click .carousel-navigation li': 'onClickCarouselNavigationItem'
   },
 
-  onClickGoToDetails: function() {
-    Jr.Navigator.navigate('details',{
+  onClickShowMoreButton: function() {
+    Jr.Navigator.navigate('ratchet',{
       trigger: true,
       animation: {
         type: Jr.Navigator.animations.SLIDE_STACK,
@@ -72,26 +74,48 @@ var HomeView = Jr.View.extend({
 
 });
 
-var DetailsTemplate = [
+// Ratchet Demo
+
+var RatchetTemplate = [
   '<header class="bar-title">',
   ' <div class="header-animated">',
-  ' <div class="button-prev">Back</div>',
-  '   <h1 class="title">Details</h1>',
-  ' </div>',
+  '   <div class="button-prev">Back</div>',
+  '   <h1 class="title">Ratchet CSS</h1>',
+  '   <div class="button-next">Next</div>',
   '</header>',
-  '<div class="content">',
-  'Hello World!',
+  '<div class="content ratchet-content">',
+  ' <p>Jr. was inspired by Ratchet and pulls in their gorgeous styles.</p>',
+  ' <p>Here are some examples:</p>',
+  ' <div class="ratchet-examples">',
+  '  <ul class="list inset">',
+  '   <li>',
+  '     <a href="#">',
+  '       List item 1',
+  '       <span class="chevron"></span>',
+  '       <span class="count">4</span>',
+  '     </a>',
+  '   </li>',
+  '  </ul>',
+  '  <div class="button-block button-main">Block button</div>',
+  '  <a class="button">Mini</a> <a class="button-main">buttons</a> <a class="button-positive">are</a> <a class="button-negative">awesome!</a>',
+  '  <div class="toggle active example-toggle"><div class="toggle-handle"></div></div>',
+  '  <div class="example-cnts"><span class="count">1</span><span class="count-main">2</span><span class="count-positive">3</span><span class="count-negative">4</span></div>',
+  '  <input type="search" placeholder="Search">',
+  ' </div>',
+  ' <p>For more examples checkout the <a href="http://maker.github.com/ratchet/">ratchet project.</a></p>',
   '</div>'
 ].join('\n');
 
-var DetailsView = Jr.View.extend({
+var RatchetView = Jr.View.extend({
   render: function(){
-    this.$el.html(DetailsTemplate);
+    this.$el.html(RatchetTemplate);
     return this;
   },
 
   events: {
-    'click .button-prev': 'onClickButtonPrev'
+    'click .button-prev': 'onClickButtonPrev',
+    'click .button-next': 'onClickButtonNext',
+    'click .example-toggle': 'onClickExampleToggle'
   },
 
   onClickButtonPrev: function() {
@@ -101,16 +125,52 @@ var DetailsView = Jr.View.extend({
         type: Jr.Navigator.animations.SLIDE_STACK,
         direction: Jr.Navigator.directions.RIGHT
       }
-    })
-  }
+    });
+  },
 
+  onClickButtonNext: function() {
+    Jr.Navigator.navigate('pushstate',{
+      trigger: true,
+      animation: {
+        type: Jr.Navigator.animations.SLIDE_STACK,
+        direction: Jr.Navigator.directions.LEFT
+      }
+    });
+  },
+
+  onClickExampleToggle: function() {
+    this.$('.example-toggle').toggleClass('active');
+  }
 });
+
+var PushStateTemplate = [
+  '<header class="bar-title">',
+  ' <div class="header-animated">',
+  '   <div class="button-prev">Back</div>',
+  '   <h1 class="title">Pushstate API</h1>',
+  '</header>',
+  '<div class="content pushstate-content">',
+  '  <summary>In combination with backbone\'s routing and the pushstate api, Jr. maintains animations when you use pushstate.</summary>',
+  '  <p>Push the browser back button to watch it work.</p>',
+  '  <div class="happy-image"></div>',
+  '</div> '
+].join('\n');
+
+var PushStateView = Jr.View.extend({
+  render: function() {
+    this.$el.html(PushStateTemplate);
+    return this;
+  }
+});
+
+// Router
 
 
 var AppRouter = Jr.Router.extend({
   routes: {
     '': 'home',
-    'details': 'details'
+    'ratchet': 'ratchet',
+    'pushstate': 'pushstate'
   },
 
   home: function(){
@@ -118,10 +178,16 @@ var AppRouter = Jr.Router.extend({
     this.renderView(homeView);
   },
 
-  details: function() {
-    var detailsView = new DetailsView();
-    this.renderView(detailsView);
+  ratchet: function() {
+    var ratchetView = new RatchetView();
+    this.renderView(ratchetView);
+  },
+
+  pushstate: function() {
+    var pushStateView = new PushStateView();
+    this.renderView(pushStateView);
   }
+
 });
 
 var appRouter = new AppRouter();
