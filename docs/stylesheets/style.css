@@ -128,3 +128,21 @@ header.junior-intro {
 }
 
 /* Mobile Pushstate Example */
+
+.pushstate-content {
+  padding: 10px;
+}
+
+.pushstate-content .icon-umbrella {
+  font-size: 18em;
+  margin: auto;
+  width: 100%;
+  text-align: center;
+  display: block;
+  line-height: 250px;
+}
+
+.pushstate-content p {
+  font-size: 1.4em;
+}
+

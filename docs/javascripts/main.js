@@ -151,8 +151,8 @@ var PushStateTemplate = [
   '</header>',
   '<div class="content pushstate-content">',
   '  <summary>In combination with backbone\'s routing and the pushstate api, Jr. maintains animations when you use pushstate.</summary>',
+  '  <i class="icon-umbrella"></i>',
   '  <p>Push the browser back button to watch it work.</p>',
-  '  <div class="happy-image"></div>',
   '</div> '
 ].join('\n');
 
@@ -160,7 +160,22 @@ var PushStateView = Jr.View.extend({
   render: function() {
     this.$el.html(PushStateTemplate);
     return this;
+  },
+
+  events: {
+    'click .button-prev': 'onClickButtonPrev'
+  },
+
+  onClickButtonPrev: function() {
+    Jr.Navigator.navigate('ratchet',{
+      trigger: true,
+      animation: {
+        type: Jr.Navigator.animations.SLIDE_STACK,
+        direction: Jr.Navigator.directions.RIGHT
+      }
+    });
   }
+
 });
 
 // Router
