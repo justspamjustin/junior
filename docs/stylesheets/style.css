@@ -1,0 +1,77 @@
+
+header.junior-intro {
+  padding: 10px;
+  text-align: center;
+  background: #3d3d3d;
+  color: white;
+}
+
+.divider-list {
+  margin: 0;
+}
+
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-list {
+  width: 300%;
+  list-style-type: none;
+}
+
+.carousel-item {
+  width: 33.33333%;
+  color: white;
+  height: 200px;
+  text-align: center;
+  font-weight: lighter;
+  font-size: 1.8em;
+  padding: 10px 0;
+  float: left;
+}
+
+.show-more-button {
+  margin: 10px;
+  clear: both;
+}
+
+.carousel-item summary {
+  width: 80%;
+  margin: auto;
+}
+
+.carousel-item.native-look-and-feel {
+  background-image: url('../images/green-bg.jpeg');
+}
+
+.feature-icon {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 50%;
+  width: 50%;
+  margin: auto;
+}
+
+.native-look-and-feel .feature-icon {
+  background-image: url('../images/css3_white.png');
+}
+
+.carousel-content {
+  background-image: url('../images/red-bg.jpeg');
+}
+
+.carousel-content i {
+  font-size: 4.0em;
+}
+
+.carousel-item.backbone-content {
+  background-image: url('../images/blue-bg.jpeg');
+}
+
+.backbone-content .feature-icon {
+  background-image: url('../images/backbone-white.png');
+  height: 40%;
+  margin-top: 20px;
+}
