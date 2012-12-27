@@ -20,6 +20,9 @@ var HomeTemplate = [
   '       <div class="feature-icon"></div>',
   '     </li>',
   '   </ul>',
+  ' <div class="carousel-navigation-container">',
+  '   <ul class="carousel-navigation"><li class="active" data-index="0"></li><li data-index="1"></li><li data-index="2"></li></ul>',
+  ' </div>',
   ' </div>',
   ' <div class="button-positive button-block show-more-button">Show me more!</div>',
   '</div>'
@@ -37,11 +40,12 @@ var HomeView = Jr.View.extend({
       this.$('.carousel-list').flickable({segments:3});
     };
     setTimeout(after,1);
-
   },
 
   events: {
-    'click .go-to-details': 'onClickGoToDetails'
+    'click .go-to-details': 'onClickGoToDetails',
+    'onScroll .carousel-list': 'onScrollCarousel',
+    'click .carousel-navigation li': 'onClickCarouselNavigationItem'
   },
 
   onClickGoToDetails: function() {
@@ -53,6 +57,17 @@ var HomeView = Jr.View.extend({
       }
     })
     return false;
+  },
+
+  onScrollCarousel: function() {
+    index = this.$('.carousel-list').flickable('segment');
+    this.$('.carousel-navigation li').removeClass('active');
+    this.$('.carousel-navigation li[data-index="'+index+'"]').addClass('active');
+  },
+
+  onClickCarouselNavigationItem: function(e) {
+    var index = $(e.currentTarget).attr('data-index');
+    this.$('.carousel-list').flickable('segment',index);
   }
 
 });

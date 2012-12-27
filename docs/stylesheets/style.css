@@ -33,7 +33,6 @@ header.junior-intro {
 
 .show-more-button {
   margin: 10px;
-  clear: both;
 }
 
 .carousel-item summary {
@@ -74,4 +73,33 @@ header.junior-intro {
   background-image: url('../images/backbone-white.png');
   height: 40%;
   margin-top: 20px;
+}
+
+.carousel-navigation-container {
+  position: fixed;
+  bottom: 10px;
+  width: 100%;
+}
+
+.carousel-navigation {
+  list-style-type: none;
+  margin: auto;
+  width: 93px;
+}
+
+.carousel-navigation li {
+  width: 15px;
+  height: 15px;
+  background: white;
+  float: left;
+  opacity: .5;
+  -webkit-border-radius: 10px 10px;
+  -moz-border-radius: 10px 10px;
+  margin: 8px;
+  -webkit-transition: opacity .5s;
+  cursor: pointer;
+}
+
+.carousel-navigation li.active {
+  opacity: 1;
 }
