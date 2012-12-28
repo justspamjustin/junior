@@ -1,0 +1,258 @@
+
+/* Mobile Home Page */
+
+header.junior-intro {
+  padding: 10px;
+  text-align: center;
+  background: #3d3d3d;
+  color: white;
+}
+
+.divider-list {
+  margin: 0;
+}
+
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-list {
+  width: 300%;
+  list-style-type: none;
+}
+
+.carousel-item {
+  width: 33.33333%;
+  color: white;
+  height: 200px;
+  text-align: center;
+  font-weight: lighter;
+  font-size: 1.8em;
+  padding: 10px 0;
+  float: left;
+}
+
+.show-more-button {
+  margin: 10px;
+}
+
+.carousel-item summary {
+  width: 80%;
+  margin: auto;
+}
+
+.carousel-item.native-look-and-feel {
+  background-image: url('../images/green-bg.jpeg');
+}
+
+.feature-icon {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 50%;
+  width: 50%;
+  margin: auto;
+}
+
+.native-look-and-feel .feature-icon {
+  background-image: url('../images/css3_white.png');
+}
+
+.carousel-content {
+  background-image: url('../images/red-bg.jpeg');
+}
+
+.carousel-content i {
+  font-size: 4.0em;
+}
+
+.carousel-item.backbone-content {
+  background-image: url('../images/blue-bg.jpeg');
+}
+
+.backbone-content .feature-icon {
+  background-image: url('../images/backbone-white.png');
+  height: 40%;
+  margin-top: 20px;
+}
+
+.carousel-navigation-container {
+  position: fixed;
+  bottom: 10px;
+  width: 100%;
+}
+
+.carousel-navigation {
+  list-style-type: none;
+  margin: auto;
+  width: 93px;
+}
+
+.carousel-navigation li {
+  width: 15px;
+  height: 15px;
+  background: white;
+  float: left;
+  opacity: .5;
+  -webkit-border-radius: 10px 10px;
+  -moz-border-radius: 10px 10px;
+  margin: 8px;
+  -webkit-transition: opacity .5s;
+  -moz-transition: opacity .5s;
+  cursor: pointer;
+}
+
+.carousel-navigation li.active {
+  opacity: 1;
+}
+
+/* Mobile Ratchet Page */
+
+.ratchet-content {
+  padding: 10px;
+}
+
+.ratchet-examples {
+  margin: 10px 0;
+}
+
+.example-toggle {
+  float: left;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.example-cnts {
+  float: right;
+  margin: 14px;
+}
+
+/* Mobile Pushstate Example */
+
+.pushstate-content {
+  padding: 10px;
+}
+
+.pushstate-content .icon-umbrella {
+  font-size: 14em;
+  margin: auto;
+  width: 100%;
+  text-align: center;
+  display: block;
+  line-height: 160px;
+}
+
+.pushstate-content p {
+  font-size: 1.4em;
+}
+
+
+/** Docs **/
+
+.docs-content {
+  display: none;
+}
+
+@media screen and (min-width : 400px) {
+  #iphone-window {
+    position: absolute;
+    width: 320px;
+    height: 528px;
+    top: 147px;
+    right: 10%;
+    overflow: hidden;
+  }
+
+  #iphone-window #app-container,
+  #iphone-window .bar-title,
+  #iphone-window .content {
+    position: absolute;
+  }
+
+  .docs-content {
+    display: block;
+  }
+
+  body {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+body {
+  position: static;
+}
+
+.main-docs-content {
+  margin-top: 70px;
+}
+
+.main-docs-content .hero-unit {
+  min-height: 480px;
+}
+
+.main-docs-content .hero-unit p {
+  margin-right: 400px;
+}
+
+.main-docs-content .hero-unit h1 {
+  font-size: 6em;
+}
+
+#iphone-window {
+  background: #ffffff;
+}
+
+#iphone-image {
+  background-image: url('../images/iphone.png');
+  width: 375px;
+  height: 806px;
+  position: absolute;
+  top: 0px;
+  right: 10%;
+  margin-right: -28px;
+}
+
+.navbar-fixed-top {
+  top: -5px
+}
+
+.navbar-fixed-top .brand {
+  padding-top: 5px;
+}
+
+.hero-unit ul, ul.padded {
+  padding-left: 30px;
+}
+
+.hero-unit ul {
+  margin-right: 400px;
+}
+
+.hero-unit .btn-success {
+  font-size: 2em;
+  margin: 20px;
+}
+
+footer {
+  height: 50px;
+}
+
+
+/* Fix stuff that bootstrap breaks */
+#iphone-window .bar-title h1 {
+  margin: 0;
+}
+
+.container {
+  margin-right: 8%;
+  margin-left: 8%;
+  width: 84%;
+}
+
+
+
