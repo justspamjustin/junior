@@ -15,15 +15,163 @@
     <link rel="stylesheet" href="docs/stylesheets/style.css">
 </head>
 <body>
-    <div id="iphone-window">
-        <div id="app-container">
-            <div id="app-main"></div>
-        </div>
-    </div>
     <div class="docs-content">
-        <h1>Junior</h1>
-    </div>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+          <div class="navbar-inner">
+            <div class="container">
+              <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </a>
+              <a class="brand" href="#"><i class="icon-umbrella"></i> Jr.</a>
+              <div class="nav-collapse collapse">
+                <ul class="nav">
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#installation">Installation</a></li>
+                  <li><a href="#examples">Examples</a></li>
+                  <li><a href="#sources-and-credits">Sources & Credits</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
 
+    <div class="container main-docs-content">
+      <div class="hero-unit" style="position: relative;">
+        <h1><i class="icon-umbrella"></i> Junior</h1>
+        <p>A front-end framework for building HTML5 mobile apps with a native look and feel.</p>
+        <ul>
+            <li>CSS3 Transitions optimized for mobile performance.</li>
+            <li>Swipable carousels using flickable.js.</li>
+            <li>Integration with backbone.js views and routers.</li>
+            <li>Ratchet CSS UI components.</li>
+            <li>Try loading this page on a mobile phone or try our "simulator" to the right.</li>
+        </ul>
+        <a href="https://github.com/justspamjustin/junior/archive/master.zip" class="btn btn-success btn-large">Download <i class="icon-download-alt"></i></a>
+      </div>
+      <h2 id="installation">&zwnj;</h2>
+      <h2><i class="icon-folder-open"></i> Installation</h2>
+      <h4><i class="icon-file"></i> Javascript</h4>
+      <h5>Dependencies</h5>
+        <ul class="padded">
+            <li><a href="http://modernizr.com/">modernizr</a></li>
+            <li><a href="http://zeptojs.com/">zepto</a></li>
+            <li><a href="http://blog.kojo.com.au/flickable-zepto-plugin/">zepto flickable</a></li>
+            <li><a href="http://lodash.com/">lodash</a></li>
+            <li><a href="http://backbonejs.org/">backbone</a></li>
+        </ul>
+      <p>Each of these dependencies is included in the lib/javascripts directory.</p>
+      <h5>junior.js</h5>
+      <p>junior.js is included in the src/javascripts directory.  Include each of the dependencies and junior.js in the following order:</p>
+          <pre>&lt;script src="lib/javascripts/modernizr.custom.15848.js"&gt;&lt;/script&gt;
+&lt;script src="lib/javascripts/zepto.min.js"&gt;&lt;/script&gt;
+&lt;script src="lib/javascripts/zepto.flickable.min.js"&gt;&lt;/script&gt;
+&lt;script src="lib/javascripts/lodash.min.js"&gt;&lt;/script&gt;
+&lt;script src="lib/javascripts/backbone-min.js"&gt;&lt;/script&gt;
+&lt;script src="src/javascripts/junior.js"&gt;&lt;/script&gt;</pre>
+      <h4 class="icon-tint"> CSS</h4>
+      <h5>Dependencies</h5>
+      <ul class="padded">
+          <li><a href="http://maker.github.com/ratchet/">ratchet</a></li>
+      </ul>
+      <p>This dependency is included in the lib/stylesheets directory.</p>
+      <h5>junior.css</h5>
+      <p>junior.css is included in the src/stylesheets directory.  Include the css in the following order in the head of the document:</p>
+      <pre>&lt;link rel="stylesheet" href="lib/stylesheets/ratchet.css"/&gt;
+&lt;link rel="stylesheet" href="src/stylesheets/junior.css"/&gt;</pre>
+
+    <h4 class="icon-columns"> HTML</h4>
+    <p>junior.js expects you to have a #app-container and #app-main in your body like this.  This is where the animations and transitions happen. </p>
+    <pre>&lt;div id="app-container"&gt;
+    &lt;div id="app-main"&gt;
+    &lt;div&gt;
+&lt;div&gt;</pre>
+
+
+      <h2 id="examples">&zwnj;</h2>
+      <h2><i class="icon-magic"></i> Examples</h2>
+      <h4><i class="icon-star"></i> main.js</h4>
+      <p>The best example for how to get started is main.js (located under docs/javascripts/main.js).  Read on if you need further clarification.</p>
+
+      <h4><i class="icon-book"></i> Jr.Router</h4>
+      <p>Jr.Router is simply an extension of Backbone.Router.  It gives you a renderView method to automatically render your view with an animation. A typical router may look like this (assuming each view is defined elsewhere):</p>
+      <pre>var AppRouter = Jr.Router.extend({
+    routes: {
+      '': 'home',
+      'about': 'about',
+      'details': 'details'
+    },
+
+    home: function(){
+      var homeView = new HomeView();
+      this.renderView(homeView);
+    },
+
+    details: function() {
+      var detailsView = new DetailsView();
+      this.renderView(detailsView);
+    }
+
+});
+      </pre>
+
+        <h4><i class="icon-book"></i> Jr.View</h4>
+        <p>Jr.View is optional for you to use.  It extends from Backbone.View.  All it does is automatically bind a touchend event in place of a click event if it detects you are using a touch device.  A simple example is like this:</p>
+        <pre>var HomeView = Jr.View.extend({
+  render: function(){
+    this.$el.html("&lt;button class="some-element"&gt;Hi&lt;/button&gt;");
+    return this;
+  },
+
+  events: {
+    'click .some-element': 'onClickSomeElement'
+  },
+
+  onClickSomeElement: function() {
+    console.log('This event occurs on touchend on mobile or on click otherwise')
+  }
+
+});</pre>
+
+        <h4><i class="icon-book"></i> Jr.Navigator</h4>
+        <p>Jr.Navigator is how you trigger a navigation using an animation.  It works a lot like Backbone.history.navigate:</p>
+        <pre>Jr.Navigator.navigate('details',{
+  trigger: true,
+  animation: {
+    type: Jr.Navigator.animations.SLIDE_STACK,
+    direction: Jr.Navigator.directions.RIGHT
+  }
+});</pre>
+    <p>Currently the only animations that we have is SLIDE_STACK.  This slides from one view to the next.  Also the only directions that we have is RIGHT and LEFT.  In the future we would like to have many more animations.</p>
+
+      <h2 id="sources-and-credits">&zwnj;</h2>
+      <h2><i class="icon-edit"></i> Sources and Credits</h2>
+
+        <ul class="padded">
+            <li>Thanks to <a href="http://maker.github.com/ratchet/" target="_blank">Ratchet <i class="icon-external-link"></i></a> for the inspiration and the great mobile UI styles.</li>
+            <li>Thanks to <a href="http://modernizr.com/" target="_blank">modernizr.js <i class="icon-external-link"></i></a>.</li>
+            <li>Thanks to <a href="http://zeptojs.com/" target="_blank">zepto.js <i class="icon-external-link"></i></a>.</li>
+            <li>Thanks to <a href="http://blog.kojo.com.au/flickable-zepto-plugin/" target="_blank">the zepto flickable plugin <i class="icon-external-link"></i></a>.</li>
+            <li>Thanks to <a href="http://lodash.com/" target="_blank">lodash.js <i class="icon-external-link"></i></a>.</li>
+            <li>Thanks to <a href="http://backbonejs.org/" target="_blank">backbone.js <i class="icon-external-link"></i></a>.</li>
+            <li>Thanks to <a href="http://fortawesome.github.com/Font-Awesome/" target="_blank">Font Awesome <i class="icon-external-link"></i></a> which is used in these docs.</li>
+            <li>Thanks to <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap <i class="icon-external-link"></i></a> which is also used in these docs.</li>
+        </ul>
+
+      <footer></footer>
+
+    </div>
+    <a href="https://github.com/justspamjustin/junior"><img style="position: fixed;z-index: 10000; top: 0; right: 30px; border: 0;" src="https://github.com/jamesflorentino/fork-ribbons/raw/master/ribbons/blue-white.png" alt="Fork me on GitHub"></a>
+
+</div>
+
+<div id="iphone-image"></div>
+<div id="iphone-window">
+    <div id="app-container">
+        <div id="app-main"></div>
+    </div>
+</div>
 
     <script src="lib/javascripts/modernizr.custom.15848.js"></script>
     <script src="lib/javascripts/zepto.min.js"></script>

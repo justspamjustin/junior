@@ -160,7 +160,7 @@ header.junior-intro {
     width: 320px;
     height: 528px;
     top: 147px;
-    left: 27px;
+    right: 10%;
     overflow: hidden;
   }
 
@@ -173,11 +173,85 @@ header.junior-intro {
   .docs-content {
     display: block;
   }
+
+  body {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
 }
+
+body {
+  position: static;
+}
+
+.main-docs-content {
+  margin-top: 70px;
+}
+
+.main-docs-content .hero-unit {
+  min-height: 480px;
+}
+
+.main-docs-content .hero-unit p {
+  margin-right: 400px;
+}
+
+.main-docs-content .hero-unit h1 {
+  font-size: 6em;
+}
+
+#iphone-window {
+  background: #ffffff;
+}
+
+#iphone-image {
+  background-image: url('../images/iphone.png');
+  width: 375px;
+  height: 806px;
+  position: absolute;
+  top: 0px;
+  right: 10%;
+  margin-right: -28px;
+}
+
+.navbar-fixed-top {
+  top: -5px
+}
+
+.navbar-fixed-top .brand {
+  padding-top: 5px;
+}
+
+.hero-unit ul, ul.padded {
+  padding-left: 30px;
+}
+
+.hero-unit ul {
+  margin-right: 400px;
+}
+
+.hero-unit .btn-success {
+  font-size: 2em;
+  margin: 20px;
+}
+
+footer {
+  height: 50px;
+}
+
 
 /* Fix stuff that bootstrap breaks */
 #iphone-window .bar-title h1 {
   margin: 0;
+}
+
+.container {
+  margin-right: 8%;
+  margin-left: 8%;
+  width: 84%;
 }
 
 
