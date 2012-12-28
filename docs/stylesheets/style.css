@@ -154,7 +154,8 @@ header.junior-intro {
   display: none;
 }
 
-@media screen and (min-width : 400px) {
+@media screen and (min-width : 600px) {
+
   #iphone-window {
     position: absolute;
     width: 320px;
@@ -254,5 +255,18 @@ footer {
   width: 84%;
 }
 
+/* Fix stuff that ratchet breaks */
+.twitter-follow-button, .twitter-share-button {
+  background: none;
+  border: none;
+  cursor: default;
+  box-shadow: none;
+  margin-top: -2px;
+}
+
+.social-media-btns {
+  position: absolute;
+  bottom: 20px;
+}
 
 
