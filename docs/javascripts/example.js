@@ -162,7 +162,7 @@ var RatchetView = Jr.View.extend({
   onClickButtonPrev: function() {
     // Trigger the animation for the back button on the toolbar
 
-    Jr.Navigator.navigate('',{
+    Jr.Navigator.navigate('home',{
       trigger: true,
       animation: {
         // This time slide to the right because we are going back
@@ -236,7 +236,7 @@ var PushStateView = Jr.View.extend({
 
 var AppRouter = Jr.Router.extend({
   routes: {
-    '': 'home',
+    'home': 'home',
     'ratchet': 'ratchet',
     'pushstate': 'pushstate'
   },
@@ -260,3 +260,6 @@ var AppRouter = Jr.Router.extend({
 
 var appRouter = new AppRouter();
 Backbone.history.start();
+Jr.Navigator.navigate('home',{
+  trigger: true
+});
