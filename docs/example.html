@@ -1,0 +1,203 @@
+<!DOCTYPE html>  <html> <head>   <title>Annotated Example for Junior - A mobile HTML5 Framework.</title>   <meta http-equiv="content-type" content="text/html; charset=UTF-8">   <link rel="stylesheet" media="all" href="stylesheets/lib/docco.css" /> </head> <body>   <div id="container">     <div id="background"></div>          <table cellpadding="0" cellspacing="0">       <thead>         <tr>           <th class="docs">             <h1>               example.js             </h1>           </th>           <th class="code">           </th>         </tr>       </thead>       <tbody>                               <tr id="section-1">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-1">&#182;</a>               </div>               <p>This is the javascript file that is used to power the live example in the iphone on this <a href="http://justspamjustin.github.com/junior/">github page for the Junior HTML5 mobile framework</a>.
+Don't forget, that you need to include the necessary js and css dependencies
+that are listed on the main github page.  You will also need some initial scaffolding
+in the body of your HTML like this:</p>
+
+<pre class="highlight">&lt;div id=<em class="s1">"app-container"</em>&gt;
+   &lt;div id=<em class="s1">"app-main"</em>&gt;
+   &lt;div&gt;
+&lt;div&gt;</pre>             </td>             <td class="code">               <div class="highlight"><pre></pre></div>             </td>           </tr>                               <tr id="section-2">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-2">&#182;</a>               </div>               <h2>Defining Templates and Views</h2>             </td>             <td class="code">               <div class="highlight"><pre></pre></div>             </td>           </tr>                               <tr id="section-3">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-3">&#182;</a>               </div>               <h3>HomeTemplate</h3>
+
+<p>This is just an array of strings.  However, you can use whatever
+ templating library that you want here.</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="kd">var</span> <span class="nx">HomeTemplate</span> <span class="o">=</span> <span class="p">[</span></pre></div>             </td>           </tr>                               <tr id="section-4">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-4">&#182;</a>               </div>               <p>Put in a div with class content.  Ratchet will style this appropriately.</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="s1">&#39;&lt;div class=&quot;content&quot;&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39; &lt;header class=&quot;junior-intro&quot;&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;   &lt;h1 class=&quot;junior-name&quot;&gt;&lt;i class=&quot;icon-umbrella&quot;&gt;&lt;/i&gt; Junior&lt;/h1&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;   &lt;p&gt;A front-end framework for building html5 mobile apps with a native look and feel.&lt;/p&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39; &lt;/header&gt;&#39;</span><span class="p">,</span></pre></div>             </td>           </tr>                               <tr id="section-5">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-5">&#182;</a>               </div>               <p>Another Ratchet component, a fancy list divider.</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="s1">&#39; &lt;ul class=&quot;list divider-list&quot;&gt;&lt;li class=&quot;list-divider&quot;&gt;Features&lt;/li&gt;&lt;/ul&gt;&#39;</span><span class="p">,</span></pre></div>             </td>           </tr>                               <tr id="section-6">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-6">&#182;</a>               </div>               <p>In the view, we will use the flickable zepto plugin here, to animate this carousel.</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="s1">&#39; &lt;div class=&quot;carousel-container&quot;&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;   &lt;ul class=&quot;carousel-list&quot;&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;     &lt;li class=&quot;carousel-item native-look-and-feel&quot;&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;       &lt;summary&gt;Transitions with a native look and feel.&lt;/summary&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;       &lt;div class=&quot;feature-icon&quot;&gt;&lt;/div&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;     &lt;/li&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;     &lt;li class=&quot;carousel-item carousel-content&quot;&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;       &lt;summary&gt;Carousels using flickable.js&lt;/summary&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;       &lt;i class=&quot;icon-picture&quot;&gt;&lt;/i&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;     &lt;/li&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;     &lt;li class=&quot;carousel-item backbone-content&quot;&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;       &lt;summary&gt;Integrated with Backbone.js&lt;/summary&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;       &lt;div class=&quot;feature-icon&quot;&gt;&lt;/div&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;     &lt;/li&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;   &lt;/ul&gt;&#39;</span><span class="p">,</span></pre></div>             </td>           </tr>                               <tr id="section-7">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-7">&#182;</a>               </div>               <p>Add in these dots as a quick navigation for the carousel</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="s1">&#39; &lt;div class=&quot;carousel-navigation-container&quot;&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;   &lt;ul class=&quot;carousel-navigation&quot;&gt;&lt;li class=&quot;active&quot; data-index=&quot;0&quot;&gt;&lt;/li&gt;&lt;li data-index=&quot;1&quot;&gt;&lt;/li&gt;&lt;li data-index=&quot;2&quot;&gt;&lt;/li&gt;&lt;/ul&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39; &lt;/div&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39; &lt;/div&gt;&#39;</span><span class="p">,</span></pre></div>             </td>           </tr>                               <tr id="section-8">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-8">&#182;</a>               </div>               <p>Use a ratchet button here</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="s1">&#39; &lt;div class=&quot;button-positive button-block show-more-button&quot;&gt;Show me more!&lt;/div&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;&lt;/div&gt;&#39;</span></pre></div>             </td>           </tr>                               <tr id="section-9">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-9">&#182;</a>               </div>               <p>Join the array with a new-line for a quick and easy html template.</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="p">].</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;\n&#39;</span><span class="p">);</span></pre></div>             </td>           </tr>                               <tr id="section-10">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-10">&#182;</a>               </div>               <h3>HomeView</h3>
+
+<p>A Jr.View works just like a Backbone.View, except whenever you attach a click event,
+if will check to see if you are on a touch device and if you are, attach a
+touchend event instead.</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="kd">var</span> <span class="nx">HomeView</span> <span class="o">=</span> <span class="nx">Jr</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span></pre></div>             </td>           </tr>                               <tr id="section-11">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-11">&#182;</a>               </div>               <p>Simply render our HomeTemplate in the View's HTML</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="nx">HomeTemplate</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">afterRender</span><span class="p">();</span></pre></div>             </td>           </tr>                               <tr id="section-12">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-12">&#182;</a>               </div>               <p>Always return 'this' so Jr.Router can append your view to the body</p>             </td>             <td class="code">               <div class="highlight"><pre>    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+  <span class="p">},</span>
+
+  <span class="nx">afterRender</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setUpCarousel</span><span class="p">();</span>
+  <span class="p">},</span>
+
+  <span class="nx">setUpCarousel</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">after</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span></pre></div>             </td>           </tr>                               <tr id="section-13">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-13">&#182;</a>               </div>               <p>Use the flickable plugin to setup our carousel with 3 segments</p>             </td>             <td class="code">               <div class="highlight"><pre>      <span class="k">this</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.carousel-list&#39;</span><span class="p">).</span><span class="nx">flickable</span><span class="p">({</span><span class="nx">segments</span><span class="o">:</span><span class="mi">3</span><span class="p">});</span>
+    <span class="p">};</span></pre></div>             </td>           </tr>                               <tr id="section-14">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-14">&#182;</a>               </div>               <p>We have to put this in a setTimeout so that it sets it up after the view is added to the DOM</p>             </td>             <td class="code">               <div class="highlight"><pre>    <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">after</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+  <span class="p">},</span>
+
+  <span class="nx">events</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s1">&#39;click .show-more-button&#39;</span><span class="o">:</span> <span class="s1">&#39;onClickShowMoreButton&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;onScroll .carousel-list&#39;</span><span class="o">:</span> <span class="s1">&#39;onScrollCarousel&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;click .carousel-navigation li&#39;</span><span class="o">:</span> <span class="s1">&#39;onClickCarouselNavigationItem&#39;</span>
+  <span class="p">},</span>
+
+  <span class="nx">onClickShowMoreButton</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span></pre></div>             </td>           </tr>                               <tr id="section-15">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-15">&#182;</a>               </div>               <p>Jr.Navigator works like Backbone.history.navigate, but it allows you to add an animation in the mix.</p>             </td>             <td class="code">               <div class="highlight"><pre>    <span class="nx">Jr</span><span class="p">.</span><span class="nx">Navigator</span><span class="p">.</span><span class="nx">navigate</span><span class="p">(</span><span class="s1">&#39;ratchet&#39;</span><span class="p">,{</span>
+      <span class="nx">trigger</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nx">animation</span><span class="o">:</span> <span class="p">{</span></pre></div>             </td>           </tr>                               <tr id="section-16">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-16">&#182;</a>               </div>               <p>Do a stacking animation and slide to the left.</p>             </td>             <td class="code">               <div class="highlight"><pre>        <span class="nx">type</span><span class="o">:</span> <span class="nx">Jr</span><span class="p">.</span><span class="nx">Navigator</span><span class="p">.</span><span class="nx">animations</span><span class="p">.</span><span class="nx">SLIDE_STACK</span><span class="p">,</span>
+        <span class="nx">direction</span><span class="o">:</span> <span class="nx">Jr</span><span class="p">.</span><span class="nx">Navigator</span><span class="p">.</span><span class="nx">directions</span><span class="p">.</span><span class="nx">LEFT</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+  <span class="p">},</span>
+
+  <span class="nx">onScrollCarousel</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span></pre></div>             </td>           </tr>                               <tr id="section-17">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-17">&#182;</a>               </div>               <p>Set the active dot when the user scrolls the carousel</p>             </td>             <td class="code">               <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">index</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.carousel-list&#39;</span><span class="p">).</span><span class="nx">flickable</span><span class="p">(</span><span class="s1">&#39;segment&#39;</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.carousel-navigation li&#39;</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.carousel-navigation li[data-index=&quot;&#39;</span><span class="o">+</span><span class="nx">index</span><span class="o">+</span><span class="s1">&#39;&quot;]&#39;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">);</span>
+  <span class="p">},</span>
+
+  <span class="nx">onClickCarouselNavigationItem</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span></pre></div>             </td>           </tr>                               <tr id="section-18">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-18">&#182;</a>               </div>               <p>Scroll the carousel when the user clicks on a dot.</p>             </td>             <td class="code">               <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">index</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">currentTarget</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;data-index&#39;</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.carousel-list&#39;</span><span class="p">).</span><span class="nx">flickable</span><span class="p">(</span><span class="s1">&#39;segment&#39;</span><span class="p">,</span><span class="nx">index</span><span class="p">);</span>
+  <span class="p">}</span>
+
+<span class="p">});</span></pre></div>             </td>           </tr>                               <tr id="section-19">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-19">&#182;</a>               </div>               <h3>RatchetTemplate</h3>
+
+<p>This is just a template that shows different UI elements that you can use from the Ratchet project</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="kd">var</span> <span class="nx">RatchetTemplate</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s1">&#39;&lt;header class=&quot;bar-title&quot;&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39; &lt;div class=&quot;header-animated&quot;&gt;&#39;</span><span class="p">,</span></pre></div>             </td>           </tr>                               <tr id="section-20">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-20">&#182;</a>               </div>               <p>If you want the contents of the header to be animated as well, put those elements inside a div
+with a 'header-animated' class.</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="s1">&#39;   &lt;div class=&quot;button-prev&quot;&gt;Back&lt;/div&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;   &lt;h1 class=&quot;title&quot;&gt;Ratchet CSS&lt;/h1&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;   &lt;div class=&quot;button-next&quot;&gt;Next&lt;/div&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;&lt;/header&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;&lt;div class=&quot;content ratchet-content&quot;&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39; &lt;p&gt;Jr. was inspired by Ratchet and pulls in their gorgeous styles.&lt;/p&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39; &lt;p&gt;Here are some examples:&lt;/p&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39; &lt;div class=&quot;ratchet-examples&quot;&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;  &lt;ul class=&quot;list inset&quot;&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;   &lt;li&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;     &lt;a href=&quot;#&quot;&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;       List item 1&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;       &lt;span class=&quot;chevron&quot;&gt;&lt;/span&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;       &lt;span class=&quot;count&quot;&gt;4&lt;/span&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;     &lt;/a&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;   &lt;/li&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;  &lt;/ul&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;  &lt;div class=&quot;button-block button-main&quot;&gt;Block button&lt;/div&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;  &lt;a class=&quot;button&quot;&gt;Mini&lt;/a&gt; &lt;a class=&quot;button-main&quot;&gt;buttons&lt;/a&gt; &lt;a class=&quot;button-positive&quot;&gt;are&lt;/a&gt; &lt;a class=&quot;button-negative&quot;&gt;awesome!&lt;/a&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;  &lt;div class=&quot;toggle active example-toggle&quot;&gt;&lt;div class=&quot;toggle-handle&quot;&gt;&lt;/div&gt;&lt;/div&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;  &lt;div class=&quot;example-cnts&quot;&gt;&lt;span class=&quot;count&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;count-main&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;count-positive&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;count-negative&quot;&gt;4&lt;/span&gt;&lt;/div&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;  &lt;input type=&quot;search&quot; placeholder=&quot;Search&quot;&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39; &lt;/div&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39; &lt;p&gt;For more examples checkout the &lt;a href=&quot;http://maker.github.com/ratchet/&quot;&gt;ratchet project.&lt;/a&gt;&lt;/p&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;&lt;/div&gt;&#39;</span>
+<span class="p">].</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;\n&#39;</span><span class="p">);</span></pre></div>             </td>           </tr>                               <tr id="section-21">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-21">&#182;</a>               </div>               <h3>RatchetView</h3>             </td>             <td class="code">               <div class="highlight"><pre><span class="kd">var</span> <span class="nx">RatchetView</span> <span class="o">=</span> <span class="nx">Jr</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+  <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="nx">RatchetTemplate</span><span class="p">);</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+  <span class="p">},</span>
+
+  <span class="nx">events</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s1">&#39;click .button-prev&#39;</span><span class="o">:</span> <span class="s1">&#39;onClickButtonPrev&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;click .button-next&#39;</span><span class="o">:</span> <span class="s1">&#39;onClickButtonNext&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;click .example-toggle&#39;</span><span class="o">:</span> <span class="s1">&#39;onClickExampleToggle&#39;</span>
+  <span class="p">},</span>
+
+  <span class="nx">onClickButtonPrev</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span></pre></div>             </td>           </tr>                               <tr id="section-22">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-22">&#182;</a>               </div>               <p>Trigger the animation for the back button on the toolbar</p>             </td>             <td class="code">               <div class="highlight"><pre>    <span class="nx">Jr</span><span class="p">.</span><span class="nx">Navigator</span><span class="p">.</span><span class="nx">navigate</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,{</span>
+      <span class="nx">trigger</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nx">animation</span><span class="o">:</span> <span class="p">{</span></pre></div>             </td>           </tr>                               <tr id="section-23">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-23">&#182;</a>               </div>               <p>This time slide to the right because we are going back</p>             </td>             <td class="code">               <div class="highlight"><pre>        <span class="nx">type</span><span class="o">:</span> <span class="nx">Jr</span><span class="p">.</span><span class="nx">Navigator</span><span class="p">.</span><span class="nx">animations</span><span class="p">.</span><span class="nx">SLIDE_STACK</span><span class="p">,</span>
+        <span class="nx">direction</span><span class="o">:</span> <span class="nx">Jr</span><span class="p">.</span><span class="nx">Navigator</span><span class="p">.</span><span class="nx">directions</span><span class="p">.</span><span class="nx">RIGHT</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+  <span class="p">},</span>
+
+  <span class="nx">onClickButtonNext</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">Jr</span><span class="p">.</span><span class="nx">Navigator</span><span class="p">.</span><span class="nx">navigate</span><span class="p">(</span><span class="s1">&#39;pushstate&#39;</span><span class="p">,{</span>
+      <span class="nx">trigger</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nx">animation</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">type</span><span class="o">:</span> <span class="nx">Jr</span><span class="p">.</span><span class="nx">Navigator</span><span class="p">.</span><span class="nx">animations</span><span class="p">.</span><span class="nx">SLIDE_STACK</span><span class="p">,</span>
+        <span class="nx">direction</span><span class="o">:</span> <span class="nx">Jr</span><span class="p">.</span><span class="nx">Navigator</span><span class="p">.</span><span class="nx">directions</span><span class="p">.</span><span class="nx">LEFT</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+  <span class="p">},</span>
+
+  <span class="nx">onClickExampleToggle</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span></pre></div>             </td>           </tr>                               <tr id="section-24">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-24">&#182;</a>               </div>               <p>Simple example of how the on/off toggle switch works.</p>             </td>             <td class="code">               <div class="highlight"><pre>    <span class="k">this</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.example-toggle&#39;</span><span class="p">).</span><span class="nx">toggleClass</span><span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span></pre></div>             </td>           </tr>                               <tr id="section-25">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-25">&#182;</a>               </div>               <h2>PushStateTemplate</h2>
+
+<p>Nothing new here</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="kd">var</span> <span class="nx">PushStateTemplate</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s1">&#39;&lt;header class=&quot;bar-title&quot;&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39; &lt;div class=&quot;header-animated&quot;&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;   &lt;div class=&quot;button-prev&quot;&gt;Back&lt;/div&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;   &lt;h1 class=&quot;title&quot;&gt;Pushstate API&lt;/h1&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;&lt;/header&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;&lt;div class=&quot;content pushstate-content&quot;&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;  &lt;summary&gt;In combination with backbone\&#39;s routing and the pushstate api, Jr. maintains animations when you use pushstate.&lt;/summary&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;  &lt;i class=&quot;icon-umbrella&quot;&gt;&lt;/i&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;  &lt;p&gt;Push the browser back button to watch it work.&lt;/p&gt;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;&lt;/div&gt; &#39;</span>
+<span class="p">].</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;\n&#39;</span><span class="p">);</span></pre></div>             </td>           </tr>                               <tr id="section-26">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-26">&#182;</a>               </div>               <h2>PushStateView</h2>             </td>             <td class="code">               <div class="highlight"><pre><span class="kd">var</span> <span class="nx">PushStateView</span> <span class="o">=</span> <span class="nx">Jr</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+  <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="nx">PushStateTemplate</span><span class="p">);</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+  <span class="p">},</span>
+
+  <span class="nx">events</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s1">&#39;click .button-prev&#39;</span><span class="o">:</span> <span class="s1">&#39;onClickButtonPrev&#39;</span>
+  <span class="p">},</span>
+
+  <span class="nx">onClickButtonPrev</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">Jr</span><span class="p">.</span><span class="nx">Navigator</span><span class="p">.</span><span class="nx">navigate</span><span class="p">(</span><span class="s1">&#39;ratchet&#39;</span><span class="p">,{</span>
+      <span class="nx">trigger</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nx">animation</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">type</span><span class="o">:</span> <span class="nx">Jr</span><span class="p">.</span><span class="nx">Navigator</span><span class="p">.</span><span class="nx">animations</span><span class="p">.</span><span class="nx">SLIDE_STACK</span><span class="p">,</span>
+        <span class="nx">direction</span><span class="o">:</span> <span class="nx">Jr</span><span class="p">.</span><span class="nx">Navigator</span><span class="p">.</span><span class="nx">directions</span><span class="p">.</span><span class="nx">RIGHT</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+<span class="p">});</span></pre></div>             </td>           </tr>                               <tr id="section-27">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-27">&#182;</a>               </div>               <h2>Routing to your Views</h2>
+
+<p>Jr.Router is just like a Backbone.Router except we provide a renderView
+that will automatically add the view to the dom and do the animation if
+one is specified.  It will also automatically handle doing an opposite animation
+if the back button is pressed.</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="kd">var</span> <span class="nx">AppRouter</span> <span class="o">=</span> <span class="nx">Jr</span><span class="p">.</span><span class="nx">Router</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+  <span class="nx">routes</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s1">&#39;&#39;</span><span class="o">:</span> <span class="s1">&#39;home&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ratchet&#39;</span><span class="o">:</span> <span class="s1">&#39;ratchet&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;pushstate&#39;</span><span class="o">:</span> <span class="s1">&#39;pushstate&#39;</span>
+  <span class="p">},</span>
+
+  <span class="nx">home</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="kd">var</span> <span class="nx">homeView</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HomeView</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">renderView</span><span class="p">(</span><span class="nx">homeView</span><span class="p">);</span>
+  <span class="p">},</span>
+
+  <span class="nx">ratchet</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">ratchetView</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RatchetView</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">renderView</span><span class="p">(</span><span class="nx">ratchetView</span><span class="p">);</span>
+  <span class="p">},</span>
+
+  <span class="nx">pushstate</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">pushStateView</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PushStateView</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">renderView</span><span class="p">(</span><span class="nx">pushStateView</span><span class="p">);</span>
+  <span class="p">}</span>
+
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">appRouter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AppRouter</span><span class="p">();</span>
+<span class="nx">Backbone</span><span class="p">.</span><span class="nx">history</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
+
+</pre></div>             </td>           </tr>                </tbody>     </table>   </div> </body> </html> 
