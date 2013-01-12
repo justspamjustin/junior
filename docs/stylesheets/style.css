@@ -155,6 +155,7 @@ header.junior-intro {
 }
 
 @media screen and (min-width : 600px) {
+
   #iphone-window {
     position: absolute;
     width: 320px;
