@@ -19,6 +19,7 @@ var Jr = Jr || {};
   });
 
   Jr.Navigator = {
+    viewIdentifier: "",
     backButtonFlag: true,
     history: [],
     directions: {
@@ -38,6 +39,7 @@ var Jr = Jr || {};
       SLIDE_OVER: 'SLIDE_OVER'
     },
     navigate: function(url, opts) {
+      viewIdentifier = url;
       this.history.push(opts);
       this.backButtonFlag = false;
       return Backbone.history.navigate(url, opts);
@@ -73,6 +75,7 @@ var Jr = Jr || {};
         this.history.pop();
       }
       this.backButtonFlag = true;
+
     },
     animate: function(fromEl, toEl, type, direction) {
       if (this.animations.hasOwnProperty(type)) {
@@ -95,9 +98,18 @@ var Jr = Jr || {};
         fromEl.remove();
         toEl.attr('id', 'app-main');
         toEl.removeClass('animate-to-view').removeClass(direction);
+
+        Backbone.Events.trigger("animationComplete");
+        Backbone.Events.trigger("animationComplete-" + viewIdentifier);
         return $('#app-container').removeClass('animate').removeClass(direction);
       };
       return setTimeout(after, 400);
+    },
+    addEventListener: function(eventName, viewIdentifier, callback, context) {
+        Backbone.Events.on(eventName + "-" + viewIdentifier, callback, context);
+    },
+    removeEventListener: function(eventName, viewIdentifier, callback, context) {
+       Backbone.Events.off(eventName + "-" + viewIdentifier, callback, context);
     }
   };
 
