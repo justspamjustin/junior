@@ -67,6 +67,10 @@ var Jr = Jr || {};
     afterAnimation: function() {
       var animation, opposite;
       var lastNavigate = this.history.pop();
+
+      if (lastNavigate.viewIdentifier)
+          viewIdentifier = lastNavigate.viewIdentifier
+
       animation = lastNavigate.animation;
       opposite = this.opposites[animation.direction];
       lastNavigate.animation.direction = opposite;
@@ -75,7 +79,6 @@ var Jr = Jr || {};
         this.history.pop();
       }
       this.backButtonFlag = true;
-
     },
     animate: function(fromEl, toEl, type, direction) {
       if (this.animations.hasOwnProperty(type)) {
