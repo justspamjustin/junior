@@ -158,7 +158,10 @@ var Jr = Jr || {};
             router.renderView(this.currentView);
 
             if (this.previousView){
-                this.previousView.close();
+                var that = this;
+                setTimeout(function() {
+                    that.previousView.close();
+                }, 400);
             }
         }
     };
