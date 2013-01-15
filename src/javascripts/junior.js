@@ -55,11 +55,11 @@ var Jr = Jr || {};
             if (this.backButtonFlag === true) {
                 Backbone.Events.trigger("back");
                 try {
-                    Backbone.Events.trigger("back-" + Jr.viewIdentifier);
+                    Backbone.Events.trigger("back-" + Jr.viewIdentifier, view);
                     Jr.viewIdentifier = view.viewIdentifier;
                     //If we get an error here, we're on initial app load (first page of the app)
                 } catch (e) {
-                    Backbone.Events.trigger("back-" + this.viewIdentifier);
+                    Backbone.Events.trigger("back-" + this.viewIdentifier, view);
                 }
             }
 
@@ -84,8 +84,6 @@ var Jr = Jr || {};
             var animation, opposite;
             var lastNavigate = this.history.pop();
 
-            if (lastNavigate.viewIdentifier)
-                viewIdentifier = lastNavigate.viewIdentifier
 
             animation = lastNavigate.animation;
             opposite = this.opposites[animation.direction];
