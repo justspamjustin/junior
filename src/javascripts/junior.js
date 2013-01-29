@@ -105,5 +105,5 @@ var Jr = Jr || {};
     renderView: function(view) {
       return Jr.Navigator.renderView($('#app-main'), view);
     }
-  })
+  });
 })(Jr);
