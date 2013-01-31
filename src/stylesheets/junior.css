@@ -114,3 +114,65 @@
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
 }
+
+.animate-to-view.UP {
+  -webkit-transform: translate3d(0, 100%, 0);
+  -moz-transform: translate3d(0, 100%, 0);
+  -ms-transform: translate3d(0, 100%, 0);
+  -o-transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, 100%, 0);
+}
+
+#app-container.animate.UP {
+  -webkit-transform: translate3d(0, -100%, 0);
+  -moz-transform: translate3d(0, -100%, 0);
+  -ms-transform: translate3d(0, -100%, 0);
+  -o-transform: translate3d(0, -100%, 0);
+  transform: translate3d(0, -100%, 0);
+}
+
+#app-container.animate.UP #app-main .header-animated {
+  -webkit-transform: translate3d(0, -50% 0);
+  -moz-transform: translate3d(0, -50% 0);
+  -ms-transform: translate3d(0, -50% 0);
+  -o-transform: translate3d(0, -50% 0);
+  transform: translate3d(0, -50% 0);
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+}
+
+.animate-to-view.UP.initial .header-animated {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+}
+
+.animate-to-view.DOWN {
+  -webkit-transform: translate3d(0, -100%, 0);
+  -moz-transform: translate3d(0, -100%, 0);
+  -ms-transform: translate3d(0, -100%, 0);
+  -o-transform: translate3d(0, -100%, 0);
+  transform: translate3d(0, -100%, 0);
+}
+
+#app-container.animate.DOWN {
+  -webkit-transform: translate3d(0, 100%, 0);
+  -moz-transform: translate3d(0, 100%, 0);
+  -ms-transform: translate3d(0, 100%, 0);
+  -o-transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, 100%, 0);
+}
+
+#app-container.animate.DOWN #app-main .header-animated {
+  -webkit-transform: translate3d(0, 50% 0);
+  -moz-transform: translate3d(0, 50% 0);
+  -ms-transform: translate3d(0, 50% 0);
+  -o-transform: translate3d(0, 50% 0);
+  transform: translate3d(0, 50% 0);
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+}
+
+.animate-to-view.DOWN.initial .header-animated {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+}
