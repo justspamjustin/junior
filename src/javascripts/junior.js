@@ -82,22 +82,26 @@ var Jr = Jr || {};
       }
     },
     doAnimation: function(fromEl, toEl, type, direction) {
-      var after, next;
-      $('#app-container').prepend(toEl);
+      var appContainer = $('#app-container');
+      appContainer.prepend(toEl);
+
       toEl.addClass('animate-to-view').addClass(direction).addClass('initial');
-      $('#app-container').addClass('animate');
-      $('#app-container').addClass(direction);
-      next = function() {
+      appContainer.addClass('animate');
+      appContainer.addClass(direction);
+
+      var next = function() {
         return toEl.removeClass('initial');
       };
-      setTimeout(next, 1);
-      after = function() {
+      var after = function() {
         fromEl.remove();
         toEl.attr('id', 'app-main');
         toEl.removeClass('animate-to-view').removeClass(direction);
-        return $('#app-container').removeClass('animate').removeClass(direction);
+        return appContainer.removeClass('animate').removeClass(direction);
       };
-      return setTimeout(after, 400);
+      setTimeout(next, 1);
+      appContainer.bind('webkitTransitionEnd transitionend oTransitionEnd', after);
+
+      return;
     }
   };
 
