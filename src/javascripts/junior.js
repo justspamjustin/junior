@@ -106,7 +106,24 @@ var Jr = Jr || {};
 
   Jr.Router = Backbone.Router.extend({
     renderView: function(view) {
-      return Jr.Navigator.renderView($('#app-main'), view);
+      var appContainer = $('#app-container');
+      var isNotAnimating = function () {
+        return !appContainer.hasClass('animate');
+      };
+
+      var response;
+      if (isNotAnimating()) {
+          response = Jr.Navigator.renderView($('#app-main'), view);
+      } else {
+        var intervalId = setInterval(function () {
+          if (isNotAnimating()) {
+            clearInterval(intervalId);
+            response = Jr.Navigator.renderView($('#app-main'), view);
+          }   
+        }, 100)
+      }
+
+      return response;
     }
   })
 })(Jr);
