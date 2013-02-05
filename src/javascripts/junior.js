@@ -85,21 +85,20 @@ var Jr = Jr || {};
       var appContainer = $('#app-container');
       appContainer.prepend(toEl);
 
-      toEl.addClass('animate-to-view').addClass(direction).addClass('initial');
-      appContainer.addClass('animate');
-      appContainer.addClass(direction);
-
-      var next = function() {
+      toEl.addClass('animate-to-view initial ' + direction);
+      appContainer.addClass('animate ' + direction);
+      setTimeout(function () {
         return toEl.removeClass('initial');
-      };
-      var after = function() {
+      }, 1);
+
+      appContainer.bind('webkitTransitionEnd transitionend oTransitionEnd', function (event) {
         fromEl.remove();
         toEl.attr('id', 'app-main');
-        toEl.removeClass('animate-to-view').removeClass(direction);
-        return appContainer.removeClass('animate').removeClass(direction);
-      };
-      setTimeout(next, 1);
-      appContainer.bind('webkitTransitionEnd transitionend oTransitionEnd', after);
+        toEl.removeClass('animate-to-view ' + direction);
+        
+        $(this).unbind(event);
+        return appContainer.removeClass('animate ' + direction);
+      });
 
       return;
     }
