@@ -37,17 +37,44 @@ var Jr = Jr || {};
       SLIDE_STACK: 'SLIDE_STACK',
       SLIDE_OVER: 'SLIDE_OVER'
     },
+    currentWaitingRenderId: null,
     navigate: function(url, opts) {
-      this.history.push(opts);
-      this.backButtonFlag = false;
-      return Backbone.history.navigate(url, opts);
+      if (this.currentWaitingRenderId) {
+        clearInterval(this.currentWaitingRenderId);
+        this.currentWaitingRenderId = null;
+      }
+
+      var appContainer = $('#app-container');
+      var isNotAnimating = function () {
+        return !appContainer.hasClass('animate');
+      };
+
+      if (isNotAnimating()) {
+        return this._navigateWithoutCheck(url, opts);
+      } else {        
+        this.currentWaitingRenderId = setInterval((function (self) {
+          return function () {
+            if (isNotAnimating()) {
+              clearInterval(self.currentWaitingRenderId);
+              self.currentWaitingRenderId = null;
+
+              return this._navigateWithoutCheck(url, opts);             
+            }
+          };  
+        })(this), 200)
+      }
+    },
+    _navigateWithoutCheck: function (url, opts) {
+        this.history.push(opts); // @todo: We only ever use the last item of the history so it figures that keeping a gigantic list is pretty stupid...
+        this.backButtonFlag = false;
+        return Backbone.history.navigate(url, opts);   
     },
     renderView: function(mainEl, view) {
       var animation, newEl;
-      animation = this.history.length > 0 ? this.history[this.history.length -1].animation : null;
+      animation = this.history.length > 0 ? this.history[this.history.length - 1].animation : null;
       if (animation) {
         newEl = $('<div></div>');
-        this.resetContent(newEl, view);
+        this.resetContent(newEl);
         this.normalRenderView(newEl, view);
         this.animate(mainEl, newEl, animation.type, animation.direction);
         return this.afterAnimation();
@@ -106,24 +133,7 @@ var Jr = Jr || {};
 
   Jr.Router = Backbone.Router.extend({
     renderView: function(view) {
-      var appContainer = $('#app-container');
-      var isNotAnimating = function () {
-        return !appContainer.hasClass('animate');
-      };
-
-      var response;
-      if (isNotAnimating()) {
-          response = Jr.Navigator.renderView($('#app-main'), view);
-      } else {
-        var intervalId = setInterval(function () {
-          if (isNotAnimating()) {
-            clearInterval(intervalId);
-            response = Jr.Navigator.renderView($('#app-main'), view);
-          }   
-        }, 100)
-      }
-
-      return response;
+      return Jr.Navigator.renderView($('#app-main'), view);
     }
   })
 })(Jr);
