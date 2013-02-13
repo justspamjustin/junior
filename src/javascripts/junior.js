@@ -43,7 +43,7 @@ var Jr = Jr || {};
       SLIDE_OVER: 'SLIDE_OVER'
     },
     navigate: function(url, opts) {
-      viewIdentifier = url;
+      this.viewIdentifier = url;
       this.history.push(opts);
       this.backButtonFlag = false;
       return Backbone.history.navigate(url, opts);
@@ -55,8 +55,8 @@ var Jr = Jr || {};
       if (this.backButtonFlag === true) {
         Backbone.Events.trigger("back");
         try {
-          Backbone.Events.trigger("back-" + Jr.viewIdentifier, view);
-          Jr.viewIdentifier = view.viewIdentifier;
+          Backbone.Events.trigger("back-" + Jr.currentView, view);
+          Jr.currentView = view.viewIdentifier;
           //If we get an error here, we're on initial app load (first page of the app)
         } catch (e) {
           Backbone.Events.trigger("back-" + this.viewIdentifier, view);
@@ -83,6 +83,8 @@ var Jr = Jr || {};
     afterAnimation: function() {
       var animation, opposite;
       var lastNavigate = this.history.pop();
+
+
       animation = lastNavigate.animation;
       opposite = this.opposites[animation.direction];
       lastNavigate.animation.direction = opposite;
@@ -109,6 +111,7 @@ var Jr = Jr || {};
         return toEl.removeClass('initial');
       };
       setTimeout(next, 1);
+      var nav = this;
       after = function(isBackNavigation) {
         fromEl.remove();
         toEl.attr('id', 'app-main');
@@ -116,13 +119,13 @@ var Jr = Jr || {};
 
         if (isBackNavigation) {
           Backbone.Events.trigger("backAnimationComplete");
-          if (Jr.viewIdentifier)
-            Backbone.Events.trigger("backAnimationComplete-" + Jr.viewIdentifier);
+          if (Jr.currentView)
+            Backbone.Events.trigger("backAnimationComplete-" + Jr.currentView);
         }
         else {
           Backbone.Events.trigger("animationComplete");
-          Jr.viewIdentifier = this.viewIdentifier;
-          Backbone.Events.trigger("animationComplete-" + Jr.viewIdentifier); }
+          Jr.currentView = nav.viewIdentifier;
+          Backbone.Events.trigger("animationComplete-" + Jr.currentView); }
 
           return $('#app-container').removeClass('animate').removeClass(direction);
       };
