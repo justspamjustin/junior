@@ -54,13 +54,8 @@ var Jr = Jr || {};
 
       if (this.backButtonFlag === true) {
         Backbone.Events.trigger("back");
-        try {
-          Backbone.Events.trigger("back-" + Jr.currentView, view);
-          Jr.currentView = view.viewIdentifier;
-          //If we get an error here, we're on initial app load (first page of the app)
-        } catch (e) {
-          Backbone.Events.trigger("back-" + this.viewIdentifier, view);
-        }
+        Backbone.Events.trigger("back-" + Jr.currentView, view);
+        Jr.currentView = view.viewIdentifier;
       }
 
       if (animation) {
