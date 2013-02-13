@@ -15,10 +15,6 @@ var Jr = Jr || {};
         }
       }
       return Backbone.View.prototype.delegateEvents.call(this, this.events);
-    },
-
-    getViewIdentifier: function() {
-      return this.viewIdentifier;
     }
   });
 
