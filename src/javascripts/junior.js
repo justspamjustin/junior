@@ -15,6 +15,10 @@ var Jr = Jr || {};
         }
       }
       return Backbone.View.prototype.delegateEvents.call(this, this.events);
+    },
+
+    getViewIdentifier: function() {
+      return this.viewIdentifier;
     }
   });
 
@@ -48,7 +52,7 @@ var Jr = Jr || {};
       var animation, newEl;
       animation = this.history.length > 0 ? this.history[this.history.length -1].animation : null;
 
-      if (this.backButtonFlag === true) {
+      if (this.backButtonFlag === true && typeof Jr.currentView !== "undefined") {
         Backbone.Events.trigger("back");
         Backbone.Events.trigger("back-" + Jr.currentView, view);
         Jr.currentView = view.viewIdentifier;
