@@ -132,11 +132,11 @@
 }
 
 #app-container.animate.UP #app-main .header-animated {
-  -webkit-transform: translate3d(0, -50% 0);
-  -moz-transform: translate3d(0, -50% 0);
-  -ms-transform: translate3d(0, -50% 0);
-  -o-transform: translate3d(0, -50% 0);
-  transform: translate3d(0, -50% 0);
+  -webkit-transform: translate3d(0, -50%, 0);
+  -moz-transform: translate3d(0, -50%, 0);
+  -ms-transform: translate3d(0, -50%, 0);
+  -o-transform: translate3d(0, -50%, 0);
+  transform: translate3d(0, -50%, 0);
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
 }
@@ -163,11 +163,11 @@
 }
 
 #app-container.animate.DOWN #app-main .header-animated {
-  -webkit-transform: translate3d(0, 50% 0);
-  -moz-transform: translate3d(0, 50% 0);
-  -ms-transform: translate3d(0, 50% 0);
-  -o-transform: translate3d(0, 50% 0);
-  transform: translate3d(0, 50% 0);
+  -webkit-transform: translate3d(0, 50%, 0);
+  -moz-transform: translate3d(0, 50%, 0);
+  -ms-transform: translate3d(0, 50%, 0);
+  -o-transform: translate3d(0, 50%, 0);
+  transform: translate3d(0, 50%, 0);
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
 }
