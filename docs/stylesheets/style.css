@@ -298,6 +298,14 @@ footer {
   -ms-border-radius: 4px;
 }
 
+@media all and (max-width: 1272px) and (min-width: 0px) {
+  .ad-container {
+    position: relative;
+    top: 0;
+    right: 0;
+  }
+}
+
 .bsa_it_i {
   float: right !important;
   margin-left: 16px !important;
