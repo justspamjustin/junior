@@ -92,6 +92,10 @@ var Jr = Jr || {};
       };
       setTimeout(next, 1);
       after = function() {
+        for (var mainDivs = $('#app-container>div'), i = 0; i < mainDivs.length; i++) {
+            if (mainDivs.length > 1)
+                mainDivs.last().remove();
+        }
         fromEl.remove();
         toEl.attr('id', 'app-main');
         toEl.removeClass('animate-to-view').removeClass(direction);
