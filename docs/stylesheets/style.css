@@ -283,25 +283,16 @@ footer {
 }
 
 .ad-container {
+  float: right;
   position: absolute;
-  top: 394px;
-  right: 420px;
-  width: 320px;
-  height: 105px;
-  background-color: #ddd;
-  padding: 8px 0;
-  border-radius: 4px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -o-border-radius: 4px;
-  -ms-border-radius: 4px;
+  right: 400px;
+  bottom: 48px;
 }
 
-@media all and (max-width: 1272px) and (min-width: 0px) {
+@media all and (max-width: 1661px) and (min-width: 0px) {
   .ad-container {
-    position: relative;
-    top: 0;
-    right: 0;
+    bottom: 64px;
+    width: 150px;
   }
 }
 
@@ -328,5 +319,3 @@ body .one .bsa_it_ad .bsa_it_d { padding: 0; font-size: 12px; color: #333; }
 body .one .bsa_it_p { display: none; }
 body #bsap_aplink, body #bsap_aplink:hover { display: block; font-size: 10px; margin: 12px 15px 0; text-align: right; }
 /* adpacks */
-
-
