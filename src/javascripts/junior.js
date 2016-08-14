@@ -82,11 +82,13 @@ var Jr = Jr || {};
       }
     },
     doAnimation: function(fromEl, toEl, type, direction) {
-      var after, next;
-      $('#app-container').prepend(toEl);
-      toEl.addClass('animate-to-view').addClass(direction).addClass('initial');
-      $('#app-container').addClass('animate');
-      $('#app-container').addClass(direction);
+      var $appContainer, after, next;
+
+      $appContainer = $('#app-container');
+      $appContainer.prepend(toEl);
+      toEl.addClass('animate-to-view').addClass(direction + ' initial');
+      $appContainer.addClass('animate ' + direction);
+
       next = function() {
         return toEl.removeClass('initial');
       };
