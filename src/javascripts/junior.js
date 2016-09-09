@@ -37,17 +37,44 @@ var Jr = Jr || {};
       SLIDE_STACK: 'SLIDE_STACK',
       SLIDE_OVER: 'SLIDE_OVER'
     },
+    currentWaitingRenderId: null,
     navigate: function(url, opts) {
-      this.history.push(opts);
-      this.backButtonFlag = false;
-      return Backbone.history.navigate(url, opts);
+      if (this.currentWaitingRenderId) {
+        clearInterval(this.currentWaitingRenderId);
+        this.currentWaitingRenderId = null;
+      }
+
+      var appContainer = $('#app-container');
+      var isNotAnimating = function () {
+        return !appContainer.hasClass('animate');
+      };
+
+      if (isNotAnimating()) {
+        return this._navigateWithoutCheck(url, opts);
+      } else {        
+        this.currentWaitingRenderId = setInterval((function (self) {
+          return function () {
+            if (isNotAnimating()) {
+              clearInterval(self.currentWaitingRenderId);
+              self.currentWaitingRenderId = null;
+
+              return this._navigateWithoutCheck(url, opts);             
+            }
+          };  
+        })(this), 200)
+      }
+    },
+    _navigateWithoutCheck: function (url, opts) {
+        this.history.push(opts); // @todo: We only ever use the last item of the history so it figures that keeping a gigantic list is pretty stupid...
+        this.backButtonFlag = false;
+        return Backbone.history.navigate(url, opts);   
     },
     renderView: function(mainEl, view) {
       var animation, newEl;
-      animation = this.history.length > 0 ? this.history[this.history.length -1].animation : null;
+      animation = this.history.length > 0 ? this.history[this.history.length - 1].animation : null;
       if (animation) {
         newEl = $('<div></div>');
-        this.resetContent(newEl, view);
+        this.resetContent(newEl);
         this.normalRenderView(newEl, view);
         this.animate(mainEl, newEl, animation.type, animation.direction);
         return this.afterAnimation();
@@ -82,22 +109,25 @@ var Jr = Jr || {};
       }
     },
     doAnimation: function(fromEl, toEl, type, direction) {
-      var after, next;
-      $('#app-container').prepend(toEl);
-      toEl.addClass('animate-to-view').addClass(direction).addClass('initial');
-      $('#app-container').addClass('animate');
-      $('#app-container').addClass(direction);
-      next = function() {
+      var appContainer = $('#app-container');
+      appContainer.prepend(toEl);
+
+      toEl.addClass('animate-to-view initial ' + direction);
+      appContainer.addClass('animate ' + direction);
+      setTimeout(function () {
         return toEl.removeClass('initial');
-      };
-      setTimeout(next, 1);
-      after = function() {
+      }, 1);
+
+      appContainer.bind('webkitTransitionEnd transitionend oTransitionEnd', function (event) {
         fromEl.remove();
         toEl.attr('id', 'app-main');
-        toEl.removeClass('animate-to-view').removeClass(direction);
-        return $('#app-container').removeClass('animate').removeClass(direction);
-      };
-      return setTimeout(after, 400);
+        toEl.removeClass('animate-to-view ' + direction);
+        
+        $(this).unbind(event);
+        return appContainer.removeClass('animate ' + direction);
+      });
+
+      return;
     }
   };
 
