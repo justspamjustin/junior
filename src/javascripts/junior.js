@@ -49,7 +49,7 @@ var Jr = Jr || {};
         newEl = $('<div></div>');
         this.resetContent(newEl, view);
         this.normalRenderView(newEl, view);
-        this.animate(mainEl, newEl, animation.type, animation.direction);
+        this.animate(mainEl, newEl, animation.type, animation.direction, view);
         return this.afterAnimation();
       } else {
         this.resetContent(mainEl, view);
@@ -74,14 +74,14 @@ var Jr = Jr || {};
       }
       this.backButtonFlag = true;
     },
-    animate: function(fromEl, toEl, type, direction) {
+    animate: function(fromEl, toEl, type, direction, view) {
       if (this.animations.hasOwnProperty(type)) {
-        return this.doAnimation(fromEl, toEl, type, direction);
+        return this.doAnimation(fromEl, toEl, type, direction, view);
       } else {
         throw Error("Animation Not Available");
       }
     },
-    doAnimation: function(fromEl, toEl, type, direction) {
+    doAnimation: function(fromEl, toEl, type, direction, view) {
       var after, next;
       $('#app-container').prepend(toEl);
       toEl.addClass('animate-to-view').addClass(direction).addClass('initial');
@@ -95,6 +95,7 @@ var Jr = Jr || {};
         fromEl.remove();
         toEl.attr('id', 'app-main');
         toEl.removeClass('animate-to-view').removeClass(direction);
+        if(view && typeof view.afterRender == 'function') view.afterRender();
         return $('#app-container').removeClass('animate').removeClass(direction);
       };
       return setTimeout(after, 400);
